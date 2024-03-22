@@ -5,30 +5,35 @@ import { useState } from 'react';
 import { UserSignupData } from '~/utils/types';
 
 interface SignupProps {
-    setUser: React.Dispatch<React.SetStateAction<UserSignupData>>;
+    setUser: React.Dispatch<React.SetStateAction<UserSignupData | null>>;
 }
+
 
 const Signup = ({ setUser }: SignupProps) => {
     const [loading, setLoading] = useState(false);
 
+    const [formData, setFormData] = useState<UserSignupData>({
+        name: '',
+        email: '',
+        password: ''
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.id]: e.target.value
+        });
+    };
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setLoading(true)
-        const target = e.target as typeof e.target & {
-            name: { value: string };
-            email: { value: string };
-            password: { value: string };
-        };
-        const user = {
-            name: target.name.value,
-            email: target.email.value,
-            password: target.password.value
-        }
+        setLoading(true);
+
         setTimeout(() => {
-            setUser(user)
-            setLoading(false)
-        }, 1000)
-    }
+            setUser(formData);
+            setLoading(false);
+        }, 1000);
+    };
 
     return (
         <div className='border border-[#C1C1C1] rounded-[20px] bg-white p-10'>
@@ -45,6 +50,7 @@ const Signup = ({ setUser }: SignupProps) => {
                         placeholder="Enter"
                         className="form-input"
                         required
+                        onChange={handleChange}
                     />
                 </label>
                 <label htmlFor="email">
@@ -55,6 +61,7 @@ const Signup = ({ setUser }: SignupProps) => {
                         placeholder="Enter"
                         className="form-input"
                         required
+                        onChange={handleChange}
                     />
                 </label>
                 <label htmlFor="password">
@@ -65,6 +72,7 @@ const Signup = ({ setUser }: SignupProps) => {
                         placeholder="Enter"
                         className="form-input"
                         required
+                        onChange={handleChange}
                     />
                 </label>
 
