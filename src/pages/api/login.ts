@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const session = await getIronSession<SessionData>(req, res, sessionOptions);
 
     if (req.method === 'POST') {
-        const { email, password } = req.body;
+        const { email, password } = req.body as { email: string, password: string };
         try {
             const user = await db.user.findUnique({
                 where: {

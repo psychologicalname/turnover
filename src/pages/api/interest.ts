@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const session = await getIronSession<SessionData>(req, res, sessionOptions);
 
     if (req.method === 'POST') {
-        const { uuid } = req.body;
+        const { uuid } = req.body as { uuid: string };
         try {
             const isLoggedIn: boolean | undefined = session.isLoggedIn;
             if (isLoggedIn) {

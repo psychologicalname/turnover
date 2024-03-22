@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest) {
     headers.append('Cookie', cookie);
   }
   const userReq = await fetch('http://localhost:3000/api/login', { headers })
-  const user: User | null = await userReq.json()
+  const user = await userReq.json() as User | null
 
   if (!user || !user.isLoggedIn) {
     return NextResponse.rewrite(new URL('/login', request.url))

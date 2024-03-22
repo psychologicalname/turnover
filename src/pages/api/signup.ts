@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const session = await getIronSession<SessionData>(req, res, sessionOptions);
 
     if (req.method === 'POST') {
-        const { email, password, name } = req.body;
+        const { email, password, name } = req.body as { email: string, password: string, name: string };
         try {
             const user = await db.user.create({
                 data: {
