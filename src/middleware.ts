@@ -3,7 +3,6 @@ import { NextResponse, NextRequest } from "next/server";
 import { User } from "./utils/types";
 
 export async function middleware(request: NextRequest) {
-  console.log("running");
   const headers = new Headers();
   const cookie = request.headers.get('cookie');
   if (cookie) {
