@@ -15,7 +15,7 @@ const Categories = () => {
 
     useEffect(() => {
         fetch('/api/interest').then(res => res.json())
-            .then(data => setCategories(data?.interests || []))
+            .then((data: { interests?: Category[] }) => setCategories(data?.interests || []))
             .catch(err => console.log('Error getting data', err));
     }, [])
 
