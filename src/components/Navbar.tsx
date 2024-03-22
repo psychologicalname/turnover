@@ -40,16 +40,16 @@ const Navbar = ({ user }: { user: User }) => {
                         </ul>
                     </div>
                     <div className='flex-between gap-4'>
-                        <Image src='/Search.png' alt='search' width={32} height={32} />
-                        <Image src='/Cart.png' alt='cart' width={32} height={32} />
+                        <Image src='/assets/Search.png' alt='search' width={32} height={32} />
+                        <Image src='/assets/Cart.png' alt='cart' width={32} height={32} />
                     </div>
                 </div>
             </div>
 
             <div className='bg-gray-100 w-full h-10 flex-center gap-12'>
-                <Image src='/arrow-left.png' width={16} height={16} alt='left' />
+                <Image src='/assets/arrow-left.png' width={16} height={16} alt='left' />
                 <p className='text-[14px] font-medium'>Get 10% off on business sign up</p>
-                <Image src='/arrow-right.png' width={16} height={16} alt='right' />
+                <Image src='/assets/arrow-right.png' width={16} height={16} alt='right' />
             </div>
         </nav>
     )
