@@ -4,11 +4,7 @@ import Button from './Button';
 import { FC } from 'react';
 import { emailHide } from '~/utils/emailHide';
 import { useRouter } from 'next/navigation';
-
-interface User {
-    email: string;
-    name: string;
-}
+import { User } from '~/utils/types';
 
 const EmailVerify: FC<{ user: User }> = ({ user }) => {
 
@@ -21,15 +17,15 @@ const EmailVerify: FC<{ user: User }> = ({ user }) => {
         setLoading(true);
         fetch('/api/signup', {
             method: 'POST',
-            body: JSON.stringify({...user, otp}),
+            body: JSON.stringify({ ...user, otp }),
             headers: {
                 'Content-Type': 'application/json',
             },
         })
             .then((res) => res.json())
-            .then((data) => {
-                if (data.message) {
-                    alert(data.message);
+            .then((data: User) => {
+                if (!data?.isLoggedIn) {
+                    alert('Looks like this e-mail already exists');
                     router.push('/login')
                 } else {
                     router.push('/')

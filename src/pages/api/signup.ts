@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             session.isLoggedIn = true;
             session.email = user.email;
             await session.save();
-            res.status(200).json({ email: user.email, name: user.name });
+            res.status(200).json({ isLoggedIn: true, email: user.email, name: user.name });
         } catch (error) {
             res.status(500).json({ message: 'Looks like this E-mail already exists!' });
         }

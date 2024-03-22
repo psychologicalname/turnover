@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import Button from '~/components/Button';
+import { User } from '~/utils/types';
 
 interface LoginProps {
     setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,7 +28,7 @@ const Login = () => {
             },
         })
             .then((res) => res.json())
-            .then((data) => {
+            .then((data: User) => {
                 if (!data.isLoggedIn) {
                     alert('Invalid E-mail or Password');
                 } else {
