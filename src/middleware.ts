@@ -8,7 +8,10 @@ export async function middleware(request: NextRequest) {
   if (cookie) {
     headers.append('Cookie', cookie);
   }
-  const userReq = await fetch('http://localhost:3000/api/login', { headers })
+  const { nextUrl } = request;
+  const { host, protocol } = nextUrl;
+
+  const userReq = await fetch(`${protocol}//${host}/api/login`, { headers })
   const user = await userReq.json() as User | null
 
   if (!user || !user.isLoggedIn) {
