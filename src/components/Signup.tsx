@@ -2,9 +2,10 @@ import Link from 'next/link';
 
 import Button from './Button';
 import { useState } from 'react';
+import { UserSignupData } from '~/utils/types';
 
 interface SignupProps {
-    setUser: React.Dispatch<React.SetStateAction<any>>;
+    setUser: React.Dispatch<React.SetStateAction<UserSignupData>>;
 }
 
 const Signup = ({ setUser }: SignupProps) => {

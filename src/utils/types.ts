@@ -13,3 +13,9 @@ export interface User {
 export interface UserInterest {
     uuid: string;
 }
+
+export interface UserSignupData {
+    email: string;
+    name: string;
+    password: string;
+}

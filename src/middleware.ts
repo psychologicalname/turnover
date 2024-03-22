@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
+import { User } from "./utils/types";
 
 export async function middleware(request: NextRequest) {
   console.log("running");
@@ -8,7 +9,7 @@ export async function middleware(request: NextRequest) {
     headers.append('Cookie', cookie);
   }
   const userReq = await fetch('http://localhost:3000/api/login', { headers })
-  const user = await userReq.json()
+  const user: User | null = await userReq.json()
 
   if (!user?.isLoggedIn) {
     return NextResponse.rewrite(new URL('/login', request.url))
