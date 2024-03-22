@@ -17,7 +17,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method === 'POST') {
         const { uuid } = req.body;
         try {
-            if (session.isLoggedIn) {
+            const isLoggedIn: boolean | undefined = session.isLoggedIn;
+            if (isLoggedIn) {
                 const user = await db.user.findUnique({
                     where: {
                         email: session.email,
@@ -70,8 +71,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
     } else if (req.method === 'GET') {
         let myInterests: UserInterest[] = [];
-
-        if (session.isLoggedIn) {
+        const isLoggedIn: boolean | undefined = session.isLoggedIn;
+        if (isLoggedIn) {
             const user = await db.user.findUnique({
                 where: {
                     email: session.email,
