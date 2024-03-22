@@ -41,7 +41,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
         })
 
-        return res.json({...user, isLoggedIn: true});
+        return res.json({ ...user, isLoggedIn: true });
     } else if (req.method === "DELETE") {
         session.destroy();
 

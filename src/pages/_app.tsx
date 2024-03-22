@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import Navbar from "~/components/Navbar";
 
 import "~/styles/globals.css";
+import { User } from "~/utils/types";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,10 +16,12 @@ const inter = Inter({
 const MyApp: AppType = ({ Component, pageProps }) => {
 
   const router = useRouter();
-  const [user, setUser] = useState({ isLoggedIn: false, email: '', name: '' });
+  const [user, setUser] = useState<User>({ isLoggedIn: false, email: '', name: '' });
 
   useEffect(() => {
-    fetch('/api/login').then(res => res.json()).then((data) => setUser(data))
+    fetch('/api/login')
+      .then(res => res.json())
+      .then((data: User) => setUser(data))
       .catch(err => console.log('Error getting user data', err));
   }, [router])
 

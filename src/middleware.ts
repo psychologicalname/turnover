@@ -11,7 +11,7 @@ export async function middleware(request: NextRequest) {
   const userReq = await fetch('http://localhost:3000/api/login', { headers })
   const user: User | null = await userReq.json()
 
-  if (!user?.isLoggedIn) {
+  if (!user || !user.isLoggedIn) {
     return NextResponse.rewrite(new URL('/login', request.url))
   }
 
@@ -24,11 +24,6 @@ export async function middleware(request: NextRequest) {
   response.headers.set('user', JSON.stringify(user))
   return response
 }
-
-const matcher = (request: NextRequest) => {
-  // Apply middleware to all requests
-  return true;
-};
 
 export const config = {
   matcher: ['/((?!api|_next/static|login|signup|_next/image|favicon.ico).*)']
