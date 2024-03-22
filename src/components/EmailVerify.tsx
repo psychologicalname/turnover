@@ -4,9 +4,9 @@ import Button from './Button';
 import { FC } from 'react';
 import { emailHide } from '~/utils/emailHide';
 import { useRouter } from 'next/navigation';
-import { User } from '~/utils/types';
+import { User, UserSignupData } from '~/utils/types';
 
-const EmailVerify: FC<{ user: User }> = ({ user }) => {
+const EmailVerify: FC<{ user: UserSignupData }> = ({ user }) => {
 
     const [otp, setOtp] = useState('');
     const [loading, setLoading] = useState(false);
