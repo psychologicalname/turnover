@@ -2,10 +2,9 @@ import { type AppType } from "next/app";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
+import "~/styles/globals.css";
 
 import Navbar from "~/components/Navbar";
-
-import "~/styles/globals.css";
 import { User } from "~/utils/types";
 
 const inter = Inter({

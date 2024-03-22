@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { db } from '~/server/db';
 import { getIronSession } from 'iron-session';
+
 import { SessionData, sessionOptions } from '~/utils/sessionOptions';
 import { UserInterest } from '~/utils/types';
 
@@ -30,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     },
                 });
                 if (user) {
-                    if (user.interests.some(interest => interest.uuid === uuid)) {
+                    if (user.interests?.some(interest => interest.uuid === uuid)) {
                         await db.user.update({
                             where: {
                                 email: session.email,
@@ -84,7 +85,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 },
             });
             if (user) {
-                myInterests = user.interests;
+                myInterests = user.interests || [];
             }
         }
 

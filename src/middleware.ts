@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
+
 import { User } from "./utils/types";
 
 export async function middleware(request: NextRequest) {
@@ -16,9 +17,8 @@ export async function middleware(request: NextRequest) {
   }
 
   const response = NextResponse.next({
-    request: {
-      headers: request.headers,
-    },
+    status: 200,
+    headers: request.headers,
   })
 
   response.headers.set('user', JSON.stringify(user))

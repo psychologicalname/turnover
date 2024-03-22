@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { db } from '~/server/db';
 import { getIronSession } from 'iron-session';
+
 import { SessionData, sessionOptions } from '~/utils/sessionOptions';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

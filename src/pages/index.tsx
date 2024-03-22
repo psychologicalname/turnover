@@ -1,4 +1,5 @@
 import Head from "next/head";
+
 import Categories from "~/components/Categories";
 
 export default function Home() {

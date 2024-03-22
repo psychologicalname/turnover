@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, FC } from 'react';
 import OtpInput from 'react-otp-input';
-import Button from './Button';
-import { FC } from 'react';
-import { emailHide } from '~/utils/emailHide';
 import { useRouter } from 'next/navigation';
+
+import Button from './Button';
 import { User, UserSignupData } from '~/utils/types';
+import { emailHide } from '~/utils/emailHide';
 
 const EmailVerify: FC<{ user: UserSignupData }> = ({ user }) => {
 

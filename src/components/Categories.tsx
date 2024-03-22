@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -6,6 +6,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { PaginationItem } from "@mui/material";
 import { PiCaretLeft, PiCaretDoubleLeft, PiCaretRight, PiCaretDoubleRight } from "react-icons/pi";
+
 import { Category } from "~/utils/types";
 
 

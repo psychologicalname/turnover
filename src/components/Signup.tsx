@@ -1,7 +1,7 @@
 import Link from 'next/link';
+import { useState } from 'react';
 
 import Button from './Button';
-import { useState } from 'react';
 import { UserSignupData } from '~/utils/types';
 
 interface SignupProps {
