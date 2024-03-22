@@ -3,7 +3,7 @@ import { useState } from "react";
 import EmailVerify from "~/components/EmailVerify";
 import Signup from "~/components/Signup";
 
-const signup = () => {
+const SignupPage = () => {
     const [user, setUser] = useState(null)
 
     return (
@@ -17,4 +17,4 @@ const signup = () => {
     )
 }
 
-export default signup
+export default SignupPage

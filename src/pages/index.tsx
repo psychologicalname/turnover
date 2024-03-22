@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Categories from "~/components/Categories";
-import { GetServerSidePropsContext } from 'next';
 
 export default function Home() {
 

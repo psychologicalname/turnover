@@ -10,7 +10,7 @@ const Navbar = ({ user }: { user: User }) => {
             method: 'DELETE'
         }).then((res) => res.json()).then(() => {
             window.location.reload();
-        })
+        }).catch(err => console.log(err));
     }
 
     return (

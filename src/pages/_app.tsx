@@ -18,13 +18,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   const [user, setUser] = useState({ isLoggedIn: false, email: '', name: '' });
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const res = await fetch('/api/login');
-      const data = await res.json();
-      setUser(data);
-    }
-
-    fetchUser();
+    fetch('/api/login').then(res => res.json()).then((data) => setUser(data))
+      .catch(err => console.log('Error getting user data', err));
   }, [router])
 
   return (

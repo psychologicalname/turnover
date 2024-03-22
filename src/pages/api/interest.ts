@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { db } from '~/server/db';
 import { getIronSession } from 'iron-session';
 import { SessionData, sessionOptions } from '~/utils/sessionOptions';
+import { UserInterest } from '~/utils/types';
 
 interface Interest {
     uuid: string;
@@ -70,7 +71,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
     }
     else if (req.method === "GET") {
-        let myInterests: any[] = []
+        let myInterests: UserInterest[] = []
 
         if (session.isLoggedIn) {
             const user = await db.user.findUnique({

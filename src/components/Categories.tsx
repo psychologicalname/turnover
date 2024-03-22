@@ -1,5 +1,3 @@
-
-import { faker } from "@faker-js/faker";
 import { SetStateAction, useEffect, useState } from "react";
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -16,13 +14,9 @@ const Categories = () => {
     const [categories, setCategories] = useState<Category[]>([])
 
     useEffect(() => {
-        const fetchCategories = async () => {
-            const response = await fetch('/api/interest');
-            const data = await response.json();
-            setCategories(data?.interests || []);
-        };
-
-        fetchCategories();
+        fetch('/api/interest').then(res => res.json())
+            .then(data => setCategories(data?.interests || []))
+            .catch(err => console.log('Error getting data', err));
     }, [])
 
     // State for current page and items per page
@@ -35,7 +29,7 @@ const Categories = () => {
     const currentItems = categories.slice(indexOfFirstItem, indexOfLastItem);
 
     // Change page
-    const handlePageChange = (_: any, page: SetStateAction<number>) => setCurrentPage(page);
+    const handlePageChange = (_: React.ChangeEvent<unknown>, page: number) => setCurrentPage(page);
 
     // Function to handle checkbox selection
     const handleCheckboxChange = (id: string) => {

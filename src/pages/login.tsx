@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Categories from '~/components/Categories';
 import Login from '~/components/Login';
 
-const login = () => {
+const LoginPage = () => {
 
     return (
         <main className='flex-center mb-16'>
@@ -11,4 +11,4 @@ const login = () => {
     )
 }
 
-export default login
+export default LoginPage
