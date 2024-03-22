@@ -39,7 +39,8 @@ const Categories = () => {
             headers: {
                 'Content-Type': 'application/json'
             }
-        });
+        })
+            .catch(err => console.log(err));
         const newCategories = [...categories];
         const updatedCategories = newCategories.map((category: Category) =>
             category.uuid === id ? { ...category, selected: !(category.selected) } : category
