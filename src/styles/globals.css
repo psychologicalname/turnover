@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.flex-between {
+    @apply flex justify-between items-center;
+}
+
+.flex-end {
+    @apply flex justify-end items-center;
+}
+
+.flex-center {
+    @apply flex justify-center items-center;
+}
+
+.form-input {
+    @apply border border-[#C1C1C1] rounded-[6px] focus:outline-none px-4 py-2 w-full mb-8
+}
